@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配置选择 - AZWLUX 专业植物生长灯</title>
+    <meta name="description" content="选择适合您种植需求的AZWLUX植物灯配置">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+    .page-header {
+        margin-top: 70px;
+        padding: 4rem 2rem;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        text-align: center;
+        color: white;
+    }
+    .page-header h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    .page-header p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+    .configurator {
+        background: white;
+        padding: 4rem 0;
+    }
+    .config-step {
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        padding: 2rem;
+        border-radius: 15px;
+        border: 1px solid #eee;
+        transition: all 0.3s ease;
+    }
+    .config-step:hover {
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    }
+    .config-step h3 {
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        background: var(--accent-color);
+        color: white;
+        border-radius: 50%;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    .option-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    .option-card {
+        border: 2px solid #eee;
+        border-radius: 10px;
+        padding: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+    .option-card:hover {
+        border-color: var(--secondary-color);
+        transform: translateY(-3px);
+    }
+    .option-card.selected {
+        border-color: var(--primary-color);
+        background: #f0f7f0;
+    }
+    .option-card img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 0.8rem;
+    }
+    .option-card h4 {
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+    }
+    .option-price {
+        color: var(--accent-color);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    .summary-box {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        padding: 2rem;
+        border-radius: 15px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .summary-box h3 {
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+    }
+    .summary-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid #ddd;
+    }
+    .summary-total {
+        display: flex;
+        justify-content: space-between;
+        padding: 1.5rem 0;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+    .total-price {
+        color: var(--accent-color);
+    }
+    .action-buttons {
+        max-width: 800px;
+        margin: 2rem auto 0;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+    }
+    .power-usage {
+        background: #f0f7f0;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+        color: var(--primary-color);
+    }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">AZW<span>LUX</span></a>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">首页</a></li>
+                <li><a href="index.html#product" class="nav-link">产品</a></li>
+                <li><a href="index.html#parameters" class="nav-link">参数</a></li>
+                <li><a href="config.html" class="nav-link">配置选择</a></li>
+                <li><a href="index.html#contact" class="nav-link">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- 页面头部 -->
+    <header class="page-header">
+        <h1>自定义您的配置</h1>
+        <p>根据您的种植需求，定制专属AZWLUX植物照明方案</p>
+    </header>
+    <!-- 配置选择器 -->
+    <section class="configurator">
+        <div class="container">
+            <!-- 第一步：选择功率规格 -->
+            <div class="config-step">
+                <h3><span class="step-number">1</span> 选择功率规格</h3>
+                <div class="option-grid">
+                    <div class="option-card" data-type="power" data-value="100" data-price="899" onclick="selectOption(this)">
+                        <img src="https://picsum.photos/seed/azwlux-100w/300/200.jpg" alt="100W 标准款">
+                        <h4>100W 标准款</h4>
+                        <div class="option-price">¥899</div>
+                        <p>适合 0.5-1 m²</p>
+                    </div>
+                    <div class="option-card" data-type="power" data-value="300" data-price="2399" onclick="selectOption(this)">
+                        <img src="https://picsum.photos/seed/azwlux-300w/300/200.jpg" alt="300W Pro专业版">
+                        <h4>300W Pro专业版</h4>
+                        <div class="option-price">¥2399</div>
+                        <p>适合 1.5-3 m²</p>
+                    </div>
+                    <div class="option-card" data-type="power" data-value="600" data-price="4599" onclick="selectOption(this)">
+                        <img src="https://picsum.photos/seed/azwlux-600w/300/200.jpg" alt="600W 商用版">
+                        <h4>600W 商用版</h4>
+                        <div class="option-price">¥4599</div>
+                        <p>适合 3-6 m²</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 第二步：选择光谱类型 -->
+            <div class="config-step">
+                <h3><span class="step-number">2</span> 选择光谱类型</h3>
+                <div class="option-grid">
+                    <div class="option-card" data-type="spectrum" data-value="full" data-price="0" onclick="selectOption(this)">
+                        <h4>全光谱标准</h4>
+                        <div class="option-price">免费</div>
+                        <p>适合大多数植物</p>
+                    </div>
+                    <div class="option-card" data-type="spectrum" data-value="veg" data-price="200" onclick="selectOption(this)">
+                        <h4>营养生长专用</h4>
+                        <div class="option-price">+¥200</div>
+                        <p>叶菜类/营养生长</p>
+                    </div>
+                    <div class="option-card" data-type="spectrum" data-value="flower" data-price="300" onclick="selectOption(this)">
+                        <h4>开花结果专用</h4>
+                        <div class="option-price">+¥300</div>
+                        <p>花卉/果蔬促进开花</p>
+                    </div>
+                    <div class="option-card" data-type="spectrum" data-value="custom" data-price="500" onclick="selectOption(this)">
+                        <h4>定制光谱</h4>
+                        <div class="option-price">+¥500</div>
+                        <p>根据植物定制</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 第三步：选择控制方式 -->
+            <div class="config-step">
+                <h3><span class="step-number">3</span> 选择控制方式</h3>
+                <div class="option-grid">
+                    <div class="option-card" data-type="control" data-value="manual" data-price="0" onclick="selectOption(this)">
+                        <h4>手动调光</h4>
+                        <div class="option-price">免费</div>
+                        <p>机械旋钮调光</p>
+                    </div>
+                    <div class="option-card" data-type="control" data-value="timer" data-price="300" onclick="selectOption(this)">
+                        <h4>定时控制</h4>
+                        <div class="option-price">+¥300</div>
+                        <p>内置定时器开关</p>
+                    </div>
+                    <div class="option-card" data-type="control" data-value="app" data-price="600" onclick="selectOption(this)">
+                        <h4>APP智能控制</h4>
+                        <div class="option-price">+¥600</div>
+                        <p>手机远程控制调光</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 第四步：选择安装方式 -->
+            <div class="config-step">
+                <h3><span class="step-number">4</span> 选择安装方式</h3>
+                <div class="option-grid">
+                    <div class="option-card" data-type="mount" data-value="hang" data-price="0" onclick="selectOption(this)">
+                        <h4>悬挂安装</h4>
+                        <div class="option-price">免费</div>
+                        <p>含吊绳配件</p>
+                    </div>
+                    <div class="option-card" data-type="mount" data-value="stand" data-price="400" onclick="selectOption(this)">
+                        <h4>支架安装</h4>
+                        <div class="option-price">+¥400</div>
+                        <p>可调节高度支架</p>
+                    </div>
+                    <div class="option-card" data-type="mount" data-value="clip" data-price="150" onclick="selectOption(this)">
+                        <h4>夹具安装</h4>
+                        <div class="option-price">+¥150</div>
+                        <p>360°可调节夹具</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 配置汇总 -->
+            <div class="summary-box">
+                <h3>配置汇总</h3>
+                <div class="summary-item">
+                    <span>功率规格：</span>
+                    <span id="summary-power">请选择</span>
+                </div>
+                <div class="summary-item">
+                    <span>光谱类型：</span>
+                    <span id="summary-spectrum">请选择</span>
+                </div>
+                <div class="summary-item">
+                    <span>控制方式：</span>
+                    <span id="summary-control">请选择</span>
+                </div>
+                <div class="summary-item">
+                    <span>安装方式：</span>
+                    <span id="summary-mount">请选择</span>
+                </div>
+                <div class="summary-item">
+                    <span>加价：</span>
+                    <span id="summary-addon">¥0</span>
+                </div>
+                <div class="summary-total">
+                    <span>总价：</span>
+                    <span class="total-price" id="summary-total">请完成配置选择</span>
+                </div>
+                <div id="power-estimate" class="power-usage" style="display: none;">
+                    <i class="fas fa-info-circle"></i> <span id="estimate-text"></span>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="resetConfig()">重置配置</button>
+                <button class="btn btn-primary" onclick="goToInquiry()">提交意向</button>
+            </div>
+        </div>
+    </section>
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AZWLUX</h3>
+                <p>专业植物照明解决方案提供商，致力于为植物提供最自然、最优质的光照环境。</p>
+            </div>
+            <div class="footer-section">
+                <h3>联系我们</h3>
+                <p><i class="fas fa-phone"></i> 400-XXX-XXXX</p>
+                <p><i class="fas fa-envelope"></i> info@azwlux.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 中国·上海</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AZWLUX. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="js/config.js"></script>
+</body>
+</html>
